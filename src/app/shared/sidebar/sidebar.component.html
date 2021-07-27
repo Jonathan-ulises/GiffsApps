@@ -3,6 +3,9 @@
 
     <hr class="text-light">
     <div class="list-group list-reset">
-        <a href="#" class="list-group-item list-group-item-action">DashBoard</a>
+        <!-- ngFor para mostrar la la lista de historial del service -->
+        <a *ngFor="let query of getHistorialService"
+            href="#" 
+            class="list-group-item list-group-item-action"> {{query}} </a>
     </div>
 </aside>
