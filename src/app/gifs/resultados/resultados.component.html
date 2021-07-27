@@ -1,1 +1,29 @@
-<p>resultados works!</p>
+<!-- <u>
+    <li *ngFor="let gif of resultados">
+        {{gif.title}}
+    </li>
+</u> -->
+<div class="row">
+    <div *ngFor="let gif of resultados"
+        class="col-md-4 col-sm-6">
+
+        <div class="card">
+
+            <figure>
+                <!-- Para agregar el src directamente de una propiedad TS, se debe
+                enserar el atributo entre corchetes. -->
+                <img 
+                    [src]="gif.images.downsized_medium.url" 
+                    alt="Gif"
+                    class="card-img-top">
+            </figure>
+
+            <div class="card-body">
+                <p class="card-text"> 
+                    {{gif.title}} 
+                    <!-- {{gif.images.downsized_medium.url}} -->
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
