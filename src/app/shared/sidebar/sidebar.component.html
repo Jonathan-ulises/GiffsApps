@@ -4,8 +4,14 @@
     <hr class="text-light">
     <div class="list-group list-reset">
         <!-- ngFor para mostrar la la lista de historial del service -->
+        <!-- Los PIPES de Angular se agregan con el simbolo '|', el titlecase
+        capitaliza la oracion (coloca letra mayuscula en la primera letra de todas
+        las palabras de la oracion). Solo se manipula la informacion de forma
+        visual, no altera la informacion.-->
         <a *ngFor="let query of getHistorialService"
             href="#" 
-            class="list-group-item list-group-item-action"> {{query}} </a>
+            class="list-group-item list-group-item-action"> 
+            {{query | titlecase}} 
+        </a>
     </div>
 </aside>
