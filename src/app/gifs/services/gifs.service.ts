@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Gif, SearchGifsResponse } from '../interfaces/gifs.interfaces';
 
@@ -7,7 +7,8 @@ import { Gif, SearchGifsResponse } from '../interfaces/gifs.interfaces';
 })
 export class GifsService {
 
-  private apiKey: string = 'jqGUjwezl7VDxDe3cJU4wkS68Wz3Y7Eo';
+  private apiKey      : string = 'jqGUjwezl7VDxDe3cJU4wkS68Wz3Y7Eo';
+  private servicioURL : string = 'https://api.giphy.com/v1/gifs';
 
   //El guion bajo significa se exportara para su uso en otras clases, solo
   //es significado, no es como la palabra reservada export
@@ -47,7 +48,16 @@ export class GifsService {
       console.log(this._historial);
     }
 
-    this.http.get<SearchGifsResponse>(`https://api.giphy.com/v1/gifs/search?api_key=jqGUjwezl7VDxDe3cJU4wkS68Wz3Y7Eo&q=${ query }&limit=20`)
+    //Lista de parametos de la consulta a la API
+    const params = new HttpParams()
+      .set('api_key', this.apiKey)
+      .set('limir', '10')
+      .set('q', query);
+
+    /*
+    Como params tiene el mismo nombre de que la propiedad 'params'. 
+    */
+    this.http.get<SearchGifsResponse>(`${ this.servicioURL }/search`, { params })
       .subscribe( ( resp ) => {
         console.log( resp )
         this.resultados = resp.data;
