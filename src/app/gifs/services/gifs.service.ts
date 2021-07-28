@@ -59,7 +59,6 @@ export class GifsService {
     */
     this.http.get<SearchGifsResponse>(`${ this.servicioURL }/search`, { params })
       .subscribe( ( resp ) => {
-        console.log( resp )
         this.resultados = resp.data;
 
         //Almacenamiento local de la ultima busqueda realizada.
