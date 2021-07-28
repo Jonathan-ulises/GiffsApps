@@ -10,7 +10,8 @@
         visual, no altera la informacion.-->
         <a *ngFor="let query of getHistorialService"
             href="#" 
-            class="list-group-item list-group-item-action"> 
+            class="list-group-item list-group-item-action"
+            (click)="buscarPorHistorial( query )"> 
             {{query | titlecase}} 
         </a>
     </div>
